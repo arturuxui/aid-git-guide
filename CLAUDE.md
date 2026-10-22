@@ -49,6 +49,12 @@ Git for Beginners — продукт проекта AID (`RickOBrian/aid`), вл
   и ссылок на личные репозитории — снимок в Presentbook должен совпадать с главами без правок.
 - Правки Стандартов (issue или PR) — вносим и отвечаем; сверку «Как в AID» ведёт чат Стандартов.
 
+## Команды
+
+- `npm run check` — главы через сборщик Presentbook (берётся из `main` `RickOBrian/aid`); перед коммитом глав — обязательно.
+- `npm run pdf` — PDF в `dist/`; Chromium — `npx puppeteer browsers install chrome`. Вид проверять глазами:
+  `dist/git-for-beginners.html` (схемы рисует mermaid при сборке PDF).
+
 ## Git
 
 - `main` всегда рабочий, напрямую в него не коммитим.
