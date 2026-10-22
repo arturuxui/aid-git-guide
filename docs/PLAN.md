@@ -158,7 +158,7 @@ npm run pdf     ← scripts/build-pdf.mjs: все главы одним PDF → 
 
 ## Открытые вопросы
 
-К стороне PD (Presentbook) — через Штаб:
+К стороне PD (Presentbook) — задан Штабом в [RickOBrian/aid#172](https://github.com/RickOBrian/aid/issues/172) вместе с «Принято»:
 1. Как обновлять снимок: после merge в наш `main` — issue `to:site-presentbook` с номером коммита, или сторона PD
    сверяет сама? Снимок сейчас — с коммита `de03775` (#5).
 
