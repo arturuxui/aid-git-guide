@@ -40,7 +40,7 @@ jobs:
           PUPPETEER_SKIP_DOWNLOAD: 'true'
       - name: Chromium и шрифты
         run: |
-          npx puppeteer browsers install chrome --install-deps
+          npx puppeteer browsers install chrome
           sudo apt-get install -y --no-install-recommends fonts-noto-core fonts-noto-color-emoji
       - run: npm run pdf
       - uses: actions/upload-artifact@v4
