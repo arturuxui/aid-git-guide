@@ -11,7 +11,7 @@ aid_sources:
     section: 1. Синхронизация памяти
     checked: 2026-10-12
 aid_sources_external:
-  - repo: arturuxui/figma-components-swapper
+  - repo: figma-components-swapper
     path: CLAUDE.md
     section: Git
     checked: 2026-10-12
@@ -128,7 +128,7 @@ git push --force-with-lease
   первого — `gh pr edit N --base main`, после — `git rebase --onto`.
 
 *Источники: корневой `CLAUDE.md` и `skills/_shared/protocols/git-workflow.md` §1 — репозиторий
-`RickOBrian/aid`; `CLAUDE.md` репозитория `arturuxui/figma-components-swapper`, раздел «Git»;
+`RickOBrian/aid`; `CLAUDE.md` репозитория `figma-components-swapper`, раздел «Git»;
 сверено 2026-10-12.*
 
 ## Проверь себя
