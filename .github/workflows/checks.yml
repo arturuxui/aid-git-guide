@@ -1,0 +1,60 @@
+name: checks
+
+# Формат  — главы соберутся в Presentbook без правок: сборщик берётся из main RickOBrian/aid
+# PDF     — выгружаемая копия гайда; на PR — в артефактах запуска, на теге v* — в GitHub Release
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+    tags: ['v*']
+
+jobs:
+  format:
+    name: Формат
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: 'true'
+      - run: npm run check
+
+  pdf:
+    name: PDF
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: 'true'
+      - name: Chromium и шрифты
+        run: |
+          npx puppeteer browsers install chrome
+          sudo apt-get install -y --no-install-recommends fonts-noto-core fonts-noto-color-emoji
+      - run: npm run pdf
+      - uses: actions/upload-artifact@v4
+        with:
+          name: git-for-beginners-pdf
+          path: dist/git-for-beginners.pdf
+      - name: В релиз
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          if gh release view "$TAG" > /dev/null 2>&1; then
+            gh release upload "$TAG" dist/git-for-beginners.pdf --clobber
+          else
+            gh release create "$TAG" dist/git-for-beginners.pdf --title "Git for Beginners $TAG" --generate-notes
+          fi

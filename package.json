@@ -1,0 +1,19 @@
+{
+  "name": "aid-git-guide",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Git for Beginners — гайд по git для новичков (AID)",
+  "type": "module",
+  "scripts": {
+    "check": "node scripts/check-format.mjs",
+    "pdf": "node scripts/build-pdf.mjs"
+  },
+  "devDependencies": {
+    "marked": "18.0.13",
+    "mermaid": "11.17.2",
+    "puppeteer": "25.12.0"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}
